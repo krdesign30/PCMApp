@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html class="loading" lang="en">
+<!-- BEGIN: Head-->
+
+<head>
+    <!-- Required meta tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title></title>
+    <link rel="brain-icon" href="images/brain-152x152.png">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS Stylesheet-->
+    <link href="css/styles.css" rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-jvectormap.css">
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style type="text/css">
+        /* Chart.js */
+        
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+    <style type="text/css">
+        .jqstooltip {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            visibility: hidden;
+            background: rgb(0, 0, 0) transparent;
+            background-color: rgba(0, 0, 0, 0.6);
+            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+            color: white;
+            font: 10px arial, san serif;
+            text-align: left;
+            white-space: nowrap;
+            padding: 5px;
+            border: 1px solid white;
+            z-index: 10000;
+        }
+        
+        .jqsfield {
+            color: white;
+            font: 10px arial, san serif;
+            text-align: left;
+        }
+    </style>
+    <!-- END: Page Level CSS-->
+</head>
+<!-- END: Head-->
+
+<body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu 2-columns  " data-open="click" data-menu="vertical-dark-menu" data-col="2-columns">
+    <header class="page-topbar" id="header">
+        <div class="navbar navbar-fixed">
+            <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark black">
+                <div class="nav-wrapper">
+                    <div class="header-search-wrapper hide-on-med-and-down"><i class="material-icons">search</i>
+                        <input class="header-search-input z-depth-2" type="text" name="Search" placeholder="Explore Project Management">
+                    </div>
+                    <ul class="navbar-list right">
+                        <li class="hide-on-med-and-down">
+                            <a class="waves-effect waves-block waves-light translation-button" href="javascript:void(0);" data-target="translation-dropdown">
+                                <span class="flag-icon flag-icon-gb"></span>
+                            </a>
+                            <ul class="dropdown-content" id="translation-dropdown" tabindex="0"></ul>
+                        </li>
+                        <li class="hide-on-med-and-down">
+                            <a class="waves-effect waves-block waves-light toggle-fullscreen" href="javascript:void(0);">
+                                <i class="material-icons">settings_overscan</i>
+                            </a>
+                        </li>
+                        <li class="hide-on-large-only">
+                            <a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);">
+                                <i class="material-icons">search</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);" data-target="notifications-dropdown">
+                                <i class="material-icons">notifications_none
+                                    <small class="notification-badge">5</small>
+                                    </i>
+                            </a>
+                            <ul class="dropdown-content" id="notifications-dropdown" tabindex="0">
+                                <li tabindex="0">
+                                    <h6>NOTIFICATIONS<span class="new badge">5</span></h6>
+                                </li>
+                                <li class="divider" tabindex="0"></li>
+                                <li tabindex="0">
+                                    <a class="grey-text text-darken-2" href="#!">
+                                        <span class="material-icons icon-bg-circle cyan small">add_shopping_cart</span> A new request has been placed!</a>
+                                    <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">2 hours ago</time>
+                                </li>
+                                <li tabindex="0"><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle red small">stars</span> Completed the task</a>
+                                    <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">3 days ago</time>
+                                </li>
+                                <li tabindex="0"><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle teal small">settings</span> Settings updated</a>
+                                    <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">4 days ago</time>
+                                </li>
+                                <li tabindex="0"><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle deep-orange small">today</span> Director meeting started</a>
+                                    <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">6 days ago</time>
+                                </li>
+                                <li tabindex="0"><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle amber small">trending_up</span> Generate monthly report</a>
+                                    <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">1 week ago</time>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown">
+                                <span class="avatar-status avatar-online">
+                                        <img src="images/brain.png" alt="brain">
+                                        <i></i>
+                                        </span>
+                            </a>
+                            <ul class="dropdown-content" id="profile-dropdown" tabindex="0">
+                                <li tabindex="0">
+                                    <a class="grey-text text-darken-1" href="user-profile-page.html">
+                                        <i class="material-icons">person_outline</i> Profile
+                                    </a>
+                                </li>
+                                <li tabindex="0">
+                                    <a class="grey-text text-darken-1" href="dl.html">
+                                        <i class="material-icons">chat_bubble_outline</i> Distribution List
+                                    </a>
+                                </li>
+                                <li tabindex="0">
+                                    <a class="grey-text text-darken-1" href="contact.html">
+                                        <i class="material-icons">help_outline</i> Contact
+                                    </a>
+                                </li>
+                                <li class="divider" tabindex="0"></li>
+                                <li tabindex="0">
+                                    <a class="grey-text text-darken-1" href="user-lock-screen.html">
+                                        <i class="material-icons">lock_outline</i> Lock
+                                    </a>
+                                </li>
+                                <li tabindex="0">
+                                    <a class="grey-text text-darken-1" href="user-login.html">
+                                        <i class="material-icons">keyboard_tab</i> Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- BEGIN: SideNav-->
+    <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-dark sidenav-active-rounded">
+        <div class="brand-sidebar">
+            <h1 class="logo-wrapper">
+                <a class="brand-logo darken-1" href=index.html ">
+
+                    <span class="logo-text hide-on-med-and-down ">P&CM Analytics</span>
+                </a>
+            </h1>
+        </div>
+        <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow ps ps--active-y " id="slide-out " data-menu="menu-navigation " data-collapsible="accordion " style="transform: translateX(-105%); ">
+            <li class="active nav item open ">
+                <a class="nav-link " href="dashboard.html ">
+                    <i class="material-icons ">settings_input_svideo</i>
+                    <span class="menu-title " data-i18n=" ">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav item ">
+                <a class="nav item " href="reports.html " tabindex="0 ">
+                    <i class="material-icons ">dvr</i>
+                    <span class="menu-title " data-i18n=" ">Financial Reports</span>
+                </a>
+            </li>
+            <li class="nav item ">
+                <a class="nav item " href="pcr.html " tabindex="0 ">
+                    <i class="material-icons ">description</i>
+                    <span class="menu-title " data-i18n=" ">Project Cost Review</span>
+                </a>
+            </li>
+            <li class="nav item ">
+                <a class="nav item " href="attendance.html " tabindex="0 ">
+                    <i class="material-icons ">text_rotation_none</i>
+                    <span class="menu-title " data-i18n=" ">Attendance</span>
+                </a>
+            </li>
+            <li class="navigation-header ">
+                <a class="navigation-header-text ">Financial Status</a>
+                <i class="navigation-header-icon material-icons ">more_horiz</i>
+            </li>
+            <li class="nav-item active ">
+                <a class="nav link " href="analytics.html ">
+                    <i class="material-icons ">screen_share</i>
+                    <span class="menu-title " data-i18n=" ">Analytics</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav link " href="currentmonth.html ">
+                    <i class="material-icons ">monetization_on</i>
+                    <span class="menu-title " data-i18n=" ">Current Month</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav link " href="currentquarter.html ">
+                    <i class="material-icons ">attach_money</i>
+                    <span class="menu-title " data-i18n=" ">Current Quarter</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav link " href="year-to-date.html ">
+                    <i class="material-icons ">money</i>
+                    <span class="menu-title " data-i18n=" ">Year-to-Date</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav link " href="yearend.html ">
+                    <i class="material-icons ">money_off</i>
+                    <span class="menu-title " data-i18n=" ">Year End</span>
+                </a>
+            </li>
+            <li class="navigation-header ">
+                <a class="navigation-header-text ">Applications</a>
+                <i class="navigation-header-icon material-icons ">more_horiz</i>
+            </li>
+            <li class="nav item ">
+                <a class="nav-link " href="calendar.html ">
+                    <i class="material-icons ">today</i>
+                    <span class="menu-title " data-i18n=" ">Calendar</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav link " href="email.html ">
+                    <i class="material-icons ">mail_outline</i>
+                    <span class="menu-title " data-i18n=" ">Mail</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav link " href="chat.html ">
+                    <i class="material-icons ">chat_bubble_outline</i>
+                    <span class="menu-title " data-i18n=" ">Chat</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav link " href="todo.html ">
+                    <i class="material-icons ">check</i>
+                    <span class="menu-title " data-i18n=" ">ToDo</span>
+                </a>
+            </li>
+
+            <li class="navigation-header ">
+                <a class="navigation-header-text ">Pages </a>
+                <i class="navigation-header-icon material-icons ">more_horiz</i>
+            </li>
+            <li class="nav item ">
+                <a class="nav-link " href="signup.html ">
+                    <i class="material-icons ">check_circle</i>
+                    <span class="menu-title " data-i18n=" ">Sign Up</span>
+                </a>
+            </li>
+            <li class="nav item ">
+                <a class="nav-link " href="contact.html ">
+                    <i class="material-icons ">contacts</i>
+                    <span class="menu-title " data-i18n=" ">Contact</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="collapsible-header " href="# " tabindex="0 ">
+                    <i class="material-icons ">content_paste</i>
+                    <span class="menu-title " data-i18n=" ">Pages</span>
+                </a>
+                <div class="collapsible-body ">
+                    <ul class="collapsible collapsible-sub " data-collapsible="accordion ">
+                        <li><a class="collapsible-body " href="page-contact.html " data-i18n=" "><i class="material-icons ">radio_button_unchecked</i><span>Distribution List</span></a>
+                        </li>
+                        <li><a class="collapsible-body " href="page-blog-list.html " data-i18n=" "><i class="material-icons ">radio_button_unchecked</i><span>Blog</span></a>
+                        </li>
+                        <li><a class="collapsible-body " href="page-search.html " data-i18n=" "><i class="material-icons ">radio_button_unchecked</i><span>Search</span></a>
+                        </li>
+                        <li><a class="collapsible-body " href="financial-index.html " data-i18n=" "><i class="material-icons ">radio_button_unchecked</i><span>Financial Index</span></a>
+                        </li>
+                        <li><a class="collapsible-body " href="page-faq.html " data-i18n=" "><i class="material-icons ">radio_button_unchecked</i><span>FAQs</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item ">
+                <a class="collapsible-header " href="# " tabindex="0 ">
+                    <i class="material-icons ">face</i>
+                    <span class="menu-title " data-i18n=" ">User</span>
+                </a>
+                <div class="collapsible-body ">
+                    <ul class="collapsible collapsible-sub " data-collapsible="accordion ">
+                        <li><a class="collapsible-body " href="user-profile-page.html " data-i18n=" "><i class="material-icons ">radio_button_unchecked</i><span>User Profile</span></a>
+                        </li>
+                        <li><a class="collapsible-body " href="user-login.html " data-i18n=" "><i class="material-icons ">radio_button_unchecked</i><span>Login</span></a>
+                        </li>
+                        <li><a class="collapsible-body " href="user-register.html " data-i18n=" "><i class="material-icons ">radio_button_unchecked</i><span>Register</span></a>
+                        </li>
+                        <li><a class="collapsible-body " href="user-forgot-password.html " data-i18n=" "><i class="material-icons ">radio_button_unchecked</i><span>Forgot Password</span></a>
+                        </li>
+                        <li><a class="collapsible-body " href="user-lock-screen.html " data-i18n=" "><i class="material-icons ">radio_button_unchecked</i><span>Lock Screen</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item ">
+                <a class="nav link " href=" ">
+                    <i class="material-icons ">help_outline</i>
+                    <span class="menu-title " data-i18n=" ">Support</span>
+                </a>
+            </li>
+            <div class="ps__rail-x " style="left: 0px; bottom: 0px; ">
+                <div class="ps__thumb-x " tabindex="0 " style="left: 0px; width: 0px; "></div>
+            </div>
+            <div class="ps__rail-y " style="top: 0px; height: 651px; right: 0px; ">
+                <div class="ps__thumb-y " tabindex="0 " style="top: 0px; height: 261px; "></div>
+            </div>
+
+            <div class="navigation-background "></div>
+            <a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only " href="# " data-target="slide-out ">
+                <i class="material-icons ">menu</i>
+            </a>
+            </div>
+        </ul>
+    </aside>
+    <div id="main ">
+        <div class="row ">
+            <div class="breadcrumbs-inline pt-3 pb-1 " id="breadcrumbs-wrapper ">
+                <!-- Search for small screen-->
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col s10 m6 l6 breadcrumbs-left ">
+                            <h5 class="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down ">PCM Analytics</h5>
+                            <ol class="breadcrumbs mb-0 ">
+                                <li class="breadcrumb-item ">
+                                    <a href="home.html ">Home</a>
+                                </li>
+                                <li class="breadcrumb-item ">
+                                    <a href="dashboard.html ">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item active " aria-current="page ">Analytics</li>
+                            </ol>
+                        </div>
+                        <div class="col s2 m6 l6 ">
+                            <a class="btn black btn-floating dropdown-settings waves-effect waves-light breadcrumbs-btn right " href="#! " data-target="dropdown1 ">
+                                <i class="material-icons ">expand_more</i>
+                                <i class="material-icons right ">arrow_drop_down</i>
+                            </a>
+                            <ul class="dropdown-content " id="dropdown1 " tabindex="0 ">
+                                <li tabindex="0 "><a class="grey-text text-darken-2 " href="user-profile-page.html ">Profile<span class="new badge red ">2</span></a></li>
+                                <li tabindex="0 "><a class="grey-text text-darken-2 " href="dl.html ">Distribution List</a></li>
+                                <li tabindex="0 "><a class="grey-text text-darken-2 " href="page-faq.html ">FAQ</a></li>
+                                <li class="divider " tabindex="-1 "></li>
+                                <li tabindex="0 "><a class="grey-text text-darken-2 " href="user-login.html ">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col s12 ">
+                <div class="container ">
+                    <!-- card stats start -->
+                    <div id="card-stats ">
+                        <div class="row ">
+                            <div class="col s12 m6 l3 ">
+                                <div class="card animate fadeLeft cyan ">
+                                    <div class="card-content cyan white-text ">
+                                        <p class="card-stats-title "><i class="material-icons ">person_outline</i>Capital 9+3LE </p>
+                                        <h4 class="card-stats-number white-text ">$48,620,236</h4>
+                                        <p class="card-stats-compare ">
+                                            <i class="material-icons ">keyboard_arrow_up</i> $14,196,092 Favorable
+                                            <span class="cyan text text-lighten-5 ">from September Budget</span>
+                                        </p>
+                                    </div>
+                                    <div class="card-action center cyan darken-1 ">
+                                        <div id="clients-bar " class="center-align ">
+                                            <p style="color: white ">10/8/2019</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3 ">
+                                <div class="card animate fadeLeft red accent-2 ">
+                                    <div class="card-content red accent-2 white-text ">
+                                        <p class="card-stats-title "><i class="material-icons ">attach_money</i>Expense 9+3LE</p>
+                                        <h4 class="card-stats-number white-text ">$3,475,227</h4>
+                                        <p class="card-stats-compare ">
+                                            <i class="material-icons ">keyboard_arrow_up</i> $1,351,150 Favorable
+                                            <span class="red-text text-lighten-5 ">from September Budget</span>
+                                        </p>
+                                    </div>
+                                    <div class="card-action red ">
+                                        <div id="sales-compositebar " class="center-align ">
+                                            <p style="color: white ">10/8/2019</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3 ">
+                                <div class="card animate fadeRight orange lighten-1 ">
+                                    <div class="card-content orange lighten-1 white-text ">
+                                        <p class="card-stats-title ">
+                                            <i class="material-icons ">attach_money</i>Capital YTD 9+3LE
+                                        </p>
+                                        <h4 class="card-stats-number white-text ">$414,380,137</h4>
+                                        <p class="card-stats-compare ">
+                                            <i class="material-icons ">keyboard_arrow_up</i> $37,104,354 Favorable
+                                            <span class="orange-text text-lighten-5 ">from YTD Budget</span>
+                                        </p>
+                                    </div>
+                                    <div class="card-action orange ">
+                                        <div id="profit-tristate " class="center-align ">
+                                            <p style="color: white ">10/8/2019</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m6 l3 ">
+                                <div class="card animate fadeRight green lighten-1 ">
+                                    <div class="card-content green lighten-1 white-text ">
+                                        <p class="card-stats-title ">
+                                            <i class="material-icons ">trending_up</i> Capital FY 9+3LE</p>
+                                        <h4 class="card-stats-number white-text ">$574,829,256</h4>
+                                        <p class="card-stats-compare ">
+                                            <i class="material-icons ">keyboard_arrow_down</i>$12,885,115 Favorable
+                                            <span class="green-text text-lighten-5 ">from FY Budget</span>
+                                        </p>
+                                    </div>
+                                    <div class="card-action green ">
+                                        <div id="invoice-line " class="center-align ">
+                                            <p style="color: white ">10/8/2019</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--card stats end-->
+                    <!--chart dashboard start-->
+                    <div id="chart-dashboard ">
+                        <div class="row ">
+                            <div class="col s12 m8 l8 ">
+                                <div class="card animate fadeUp ">
+                                    <div class="card-move-up waves-effect waves-block waves-light ">
+                                        <div class="move-up cyan darken-1 ">
+                                            <div>
+                                                <span class="chart-title white-text ">Capital</span>
+                                                <div class="chart-revenue cyan darken-2 white-text ">
+                                                    <p class="chart-revenue-total ">$48,620,236</p>
+                                                    <p class="chart-revenue-per ">
+                                                        <i class="material-icons ">arrow_drop_up</i> 22.50%
+                                                    </p>
+                                                </div>
+                                                <div class="switch chart-revenue-switch right ">
+                                                    <label class="cyan-text text-lighten-5 ">
+                             Month <input type="checkbox "> <span class="lever "></span> Year
+                          </label>
+                                                </div>
+                                            </div>
+                                            <div class="trending-line-chart-wrapper ">
+                                                <div class="chartjs-size-monitor " style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1; ">
+                                                    <div class="chartjs-size-monitor-expand " style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1; ">
+                                                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0 "></div>
+                                                    </div>
+                                                    <div class="chartjs-size-monitor-shrink " style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1; ">
+                                                        <div style="position:absolute;width:200%;height:200%;left:0; top:0 "></div>
+                                                    </div>
+                                                </div><canvas id="revenue-line-chart " height="170 " width="736 " class="chartjs-render-monitor " style="display: block; height: 85px; width: 368px; "></canvas></div>
+                                        </div>
+                                    </div>
+                                    <div class="card-content ">
+                                        <a class="btn-floating btn-move-up waves-effect waves-light red accent-2 z-depth-4 right ">
+                                            <i class="material-icons activator ">filter_list</i>
+                                        </a>
+                                        <div class="col s12 m3 l3 ">
+                                            <div id="doughnut-chart-wrapper ">
+                                                <div class="chartjs-size-monitor " style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1; ">
+                                                    <div class="chartjs-size-monitor-expand " style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1; ">
+                                                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0 "></div>
+                                                    </div>
+                                                    <div class="chartjs-size-monitor-shrink " style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1; ">
+                                                        <div style="position:absolute;width:200%;height:200%;left:0; top:0 "></div>
+                                                    </div>
+                                                </div>
+                                                <canvas id="doughnut-chart " height="88 " width="134 " class="chartjs-render-monitor " style="display: block; height: 44px; width: 67px; "></canvas>
+                                                <div class="doughnut-chart-status ">
+                                                    <p class="center-align font-weight-600 mt-4 ">4500</p>
+                                                    <p class="ultra-small center-align ">Sold</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m2 l2 ">
+                                            <ul class="doughnut-chart-legend ">
+                                                <li class="mobile ultra-small "><span class="legend-color "></span>BOA</li>
+                                                <li class="kitchen ultra-small "><span class="legend-color "></span> CE-T</li>
+                                                <li class="home ultra-small "><span class="legend-color "></span> CE-D</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col s12 m5 l6 ">
+                                            <div class="trending-bar-chart-wrapper ">
+                                                <div class="chartjs-size-monitor " style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1; ">
+                                                    <div class="chartjs-size-monitor-expand " style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1; ">
+                                                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0 "></div>
+                                                    </div>
+                                                    <div class="chartjs-size-monitor-shrink " style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1; ">
+                                                        <div style="position:absolute;width:200%;height:200%;left:0; top:0 "></div>
+                                                    </div>
+                                                </div><canvas id="trending-bar-chart " height="78 " width="260 " class="chartjs-render-monitor " style="display: block; height: 39px; width: 130px; "></canvas></div>
+                                        </div>
+                                    </div>
+                                    <div class="card-reveal ">
+                                        <span class="card-title grey-text text-darken-4 ">Capital by Category <i class="material-icons right ">close</i>
+                 </span>
+                                        <table class="responsive-table ">
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="id ">ID</th>
+                                                    <th data-field="month ">Category</th>
+                                                    <th data-field="item-sold ">Budget</th>
+                                                    <th data-field="item-price ">8+4LE</th>
+                                                    <th data-field="total-profit ">9+3LE</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Back Office Allocation</td>
+                                                    <td>100</td>
+                                                    <td>122</td>
+                                                    <td>$122,00.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Capacity Expansion - Transmission</td>
+                                                    <td></td>
+                                                    <td></td>
+
+                                                    <td>$122,00.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Capacity Expansion - Distribution</td>
+                                                    <td></td>
+                                                    <td></td>
+
+                                                    <td>$122,00.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>Public Relocation</td>
+                                                    <td></td>
+                                                    <td></td>
+
+                                                    <td>$122,00.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>Utility Advancement</td>
+                                                    <td></td>
+                                                    <td></td>
+
+                                                    <td>$122,00.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6</td>
+                                                    <td>System Performance - Subs</td>
+                                                    <td></td>
+                                                    <td></td>
+
+                                                    <td>$122,00.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>7</td>
+                                                    <td>System Performance - Transmission</td>
+                                                    <td></td>
+                                                    <td></td>
+
+                                                    <td>$122,00.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8</td>
+                                                    <td>System Performance - Expansion</td>
+                                                    <td></td>
+                                                    <td></td>
+
+                                                    <td>$122,00.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>9</td>
+                                                    <td>System Performance - Relay & Protection</td>
+                                                    <td></td>
+                                                    <td></td>
+
+                                                    <td>$122,00.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10</td>
+                                                    <td>New Business</td>
+                                                    <td>$122,00.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>11</td>
+                                                    <td>Corrective Maintenace</td>
+                                                    <td>$122,00.00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>112</td>
+                                                    <td>Generation</td>
+                                                    <td>$122,00.00</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m4 l4 ">
+                                <div class="card animate fadeUp ">
+                                    <div class="card-move-up teal accent-4 waves-effect waves-block waves-light ">
+                                        <div class="move-up ">
+                                            <div class="chartjs-size-monitor " style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1; ">
+                                                <div class="chartjs-size-monitor-expand " style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1; ">
+                                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0 "></div>
+                                                </div>
+                                                <div class="chartjs-size-monitor-shrink " style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1; ">
+                                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0 "></div>
+                                                </div>
+                                            </div>
+                                            <p class="margin white-text ">Category Stats</p>
+                                            <canvas id="trending-radar-chart " height="112 " width="300 " class="chartjs-render-monitor " style="display: block; height: 56px; width: 150px; "></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="card-content teal ">
+                                        <a class="btn-floating btn-move-up waves-effect waves-light red accent-2 z-depth-4 right ">
+                                            <i class="material-icons activator ">done</i>
+                                        </a>
+                                        <div class="line-chart-wrapper ">
+                                            <div class="chartjs-size-monitor " style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1; ">
+                                                <div class="chartjs-size-monitor-expand " style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1; ">
+                                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0 "></div>
+                                                </div>
+                                                <div class="chartjs-size-monitor-shrink " style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1; ">
+                                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0 "></div>
+                                                </div>
+                                            </div>
+                                            <p class="margin white-text ">Expense by Executive Category</p>
+                                            <canvas id="line-chart " height="122 " width="324 " class="chartjs-render-monitor " style="display: block; height: 61px; width: 162px; "></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="card-reveal ">
+                                        <span class="card-title grey-text text-darken-4 ">Expense by Executive Category <i class="material-icons right ">close</i>
+                 </span>
+                                        <table class="responsive-table ">
+                                            <thead>
+                                                <tr>
+                                                    <th data-field="category-name ">Category Name</th>
+                                                    <th data-field="expense ">Expense</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Back Office Allocation</td>
+                                                    <td>$3,603,577</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Capacity Expansion - Expansion</td>
+                                                    <td>76</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Capacity Expansion - Transmission</td>
+                                                    <td>65</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Public Relocation</td>
+                                                    <td>76</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Utility Advancement</td>
+                                                    <td>65</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>System Performance - Subs</td>
+                                                    <td>76</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>System Performance - Transmission</td>
+                                                    <td>65</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>System Performance - Distribution</td>
+                                                    <td>76</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>System Performance - Relay & Protection</td>
+                                                    <td>76</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>New Business</td>
+                                                    <td>76</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Corrective Maintenance</td>
+                                                    <td>76</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>Generation</td>
+                                                    <td>76</td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--chart dashboard end-->
+                    <!--work collections start-->
+                    <div id="work-collections ">
+                        <div class="row ">
+                            <div class="col s12 m12 l6 ">
+                                <ul id="projects-collection " class="collection z-depth-1 animate fadeLeft ">
+                                    <li class="collection-item avatar ">
+                                        <i class="material-icons cyan circle ">card_travel</i>
+                                        <h6 class="collection-header m-0 ">Projects</h6>
+                                        <p>Projects driving favorability = ($9.8M)</p>
+                                    </li>
+                                    <li class="collection-item ">
+                                        <div class="row ">
+                                            <div class="col s6 ">
+                                                <p class="collections-title ">ITN - 53076: Voltage Optimization</p>
+                                                <p class="collections-content ">Capacity Expansion - Distribution</p>
+                                            </div>
+                                            <div class="col s3 "><span class="task-cat cyan ">($2.3M)</span></div>
+                                            <div class="col s3 ">
+                                                <div id="project-line-1 ">
+                                                    <canvas width="78 " height="30 " style="display: inline-block; width: 78.5625px; height: 30px; vertical-align: top; "></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item ">
+                                        <div class="row ">
+                                            <div class="col s6 ">
+                                                <p class="collections-title ">ITN 4920: Replace Distribution Poor Performing URD Ca</p>
+                                                <p class="collections-content ">System Performance - Distribution</p>
+                                            </div>
+                                            <div class="col s3 ">
+                                                <span class="task-cat red accent-2 ">($2.0M)</span></div>
+                                            <div class="col s3 ">
+                                                <div id="project-line-2 ">
+                                                    <canvas width="78 " height="30 " style="display: inline-block; width: 78.5625px; height: 30px; vertical-align: top; "></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item ">
+                                        <div class="row ">
+                                            <div class="col s6 ">
+                                                <p class="collections-title ">ITN - 56960: TSS76 Blue Island Hardening 34kV Building</p>
+                                                <p class="collections-content ">System Performance - Subs</p>
+                                            </div>
+                                            <div class="col s3 "><span class="task-cat teal accent-4 ">($1.7M)</span></div>
+                                            <div class="col s3 ">
+                                                <div id="project-line-3 ">
+                                                    <canvas width="78 " height="30 " style="display: inline-block; width: 78.5625px; height: 30px; vertical-align: top; "></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item ">
+                                        <div class="row ">
+                                            <div class="col s6 ">
+                                                <p class="collections-title ">ITN - 51976: TSS 103 Lisle Install seven 345kV CBs & GIB.</p>
+                                                <p class="collections-content ">Capacity Expansion - Transmission</p>
+                                            </div>
+                                            <div class="col s3 ">
+                                                <span class="task-cat gradient-45deg-indigo-light-blue ">($1.5M)</span>
+                                            </div>
+                                            <div class="col s3 ">
+                                                <div id="project-line-4 ">
+                                                    <canvas width="78 " height="30 " style="display: inline-block; width: 78.5625px; height: 30px; vertical-align: top; "></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item ">
+                                        <div class="row ">
+                                            <div class="col s6 ">
+                                                <p class="collections-title ">ITN - 59522: Enbridge Dekalb - HVD</p>
+                                                <p class="collections-content ">New Business</p>
+                                            </div>
+                                            <div class="col s3 ">
+                                                <span class="task-cat gradient-45deg-red-pink ">($0.8M)</span>
+                                            </div>
+                                            <div class="col s3 ">
+                                                <div id="project-line-4 ">
+                                                    <canvas width="78 " height="30 " style="display: inline-block; width: 78.5625px; height: 30px; vertical-align: top; "></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item ">
+                                        <div class="row ">
+                                            <div class="col s6 ">
+                                                <p class="collections-title ">ITN - 52091: Digital Realty Franklin Park Data Center - Distribution</p>
+                                                <p class="collections-content ">New Business</p>
+                                            </div>
+                                            <div class="col s3 ">
+                                                <span class="task-cat gradient-45deg-purple-deep-orange ">($0.8M)</span>
+                                            </div>
+                                            <div class="col s3 ">
+                                                <div id="project-line-4 ">
+                                                    <canvas width="78 " height="30 " style="display: inline-block; width: 78.5625px; height: 30px; vertical-align: top; "></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item ">
+                                        <div class="row ">
+                                            <div class="col s6 ">
+                                                <p class="collections-title ">ITN - 56607: Green River Wind Farm O29</p>
+                                                <p class="collections-content ">Generation</p>
+                                            </div>
+                                            <div class="col s3 ">
+                                                <span class="task-cat deep-orange accent-2 ">($0.7M)</span>
+                                            </div>
+                                            <div class="col s3 ">
+                                                <div id="project-line-4 ">
+                                                    <canvas width="78 " height="30 " style="display: inline-block; width: 78.5625px; height: 30px; vertical-align: top; "></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col s12 m12 l6 ">
+                                <ul id="issues-collection " class="collection z-depth-1 animate fadeRight ">
+                                    <li class="collection-item avatar ">
+                                        <i class="material-icons red accent-2 circle ">bug_report</i>
+                                        <h6 class="collection-header m-0 ">Projects</h6>
+                                        <p>Projects offset favorability = $9M </p>
+                                    </li>
+                                    <li class="collection-item ">
+                                        <div class="row ">
+                                            <div class="col s7 ">
+                                                <p class="collections-title ">ITN - 5084: CE-Replace Reject Dist Poles</p>
+                                                <p class="collections-content ">Corrective Maintenance</p>
+                                            </div>
+                                            <div class="col s2 ">
+                                                <span class="task-cat deep-orange accent-2 ">$3.8M</span>
+                                            </div>
+                                            <div class="col s3 ">
+                                                <div class="progress ">
+                                                    <div class="determinate " style="width: 94% "></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item ">
+                                        <div class="row ">
+                                            <div class="col s7 ">
+                                                <p class="collections-title ">ITN - 54277: I-294 Transmission Line L13505 & L13506</p>
+                                                <p class="collections-content ">Public Relocation</p>
+                                            </div>
+                                            <div class="col s2 ">
+                                                <span class="task-cat cyan ">$2.8M</span>
+                                            </div>
+                                            <div class="col s3 ">
+                                                <div class="progress ">
+                                                    <div class="determinate " style="width: 84% "></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="collection-item ">
+                                        <div class="row ">
+                                            <div class="col s7 ">
+                                                <p class="collections-title ">ITN - 52757: Bronzeville MICROGRID</p>
+                                                <p class="collections-content ">Utlity Advancement</p>
+                                            </div>
+                                            <div class="col s2 ">
+                                                <span class="task-cat red accent-2 ">$2.4M</span>
+                                            </div>
+                                            <div class="col s3 ">
+                                                <div class="progress ">
+                                                    <div class="determinate " style="width: 80% "></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--work collections end-->
+                    <!--card widgets start-->
+                    <div id="card-widgets ">
+                        <div class="row ">
+                            <div class="col s12 m6 l4 ">
+                                <ul id="task-card " class="collection with-header animate fadeLeft ">
+                                    <li class="collection-header cyan ">
+                                        <h5 class="task-card-title mb-3 ">Action items</h5>
+                                        <p class="task-card-date ">Oct 23, 2019</p>
+                                    </li>
+                                    <li class="collection-item dismissable ">
+                                        <label for="task1 ">
+                                            <input type="checkbox " id="task1 "> <span class="width-100 " style="text-decoration: none; ">Department Level Resets. </span>
+                                            <a href="# " class="secondary-content "><span class="ultra-small ">Date</span></a>
+                                            <span class="task-cat cyan ">Report</span>
+                                        </label>
+                                    </li>
+                                    <li class="collection-item dismissable ">
+                                        <label for="task2 ">
+                                            <input type="checkbox " id="task2 "> <span class="width-100 " style="text-decoration: none; ">Materials. </span>
+                                            <a href="# " class="secondary-content "> <span class="ultra-small ">Date</span> </a>
+                                            <span class="task-cat red accent-2 ">Web API</span>
+                                        </label>
+                                    </li>
+                                    <li class="collection-item dismissable ">
+                                        <label for="task3 ">
+                                            <input type="checkbox " id="task3 " checked="checked ">
+                                            <span class="width-100 " style="text-decoration: line-through; ">  ABC.</span>
+                                            <a href="# " class="secondary-content "> <span class="ultra-small ">Date</span> </a>
+                                            <span class="task-cat teal accent-4 ">Mockup</span>
+                                        </label>
+                                    </li>
+                                    <li class="collection-item dismissable ">
+                                        <label for="task4 ">
+                                            <input type="checkbox " id="task4 " checked="checked " disabled="disabled ">
+                                            <span class="width-100 " style="text-decoration: line-through; ">I did it ! </span>
+                                            <a href="# " class="secondary-content "> <span class="ultra-small ">Date</span> </a>
+                                            <span class="task-cat deep-orange accent-2 ">Mobile App</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col s12 m12 l4 ">
+                                <div id="profile-card " class="card animate fadeRight ">
+                                    <div class="card-image waves-effect waves-block waves-light ">
+                                        <img class="activator " src="images/responsive.png " alt="user bg ">
+                                    </div>
+                                    <div class="card-content ">
+                                        <img src="images/report.png " alt=" " class="circle responsive-img activator card-profile-image cyan lighten-1 padding-2 ">
+                                        <a class="btn-floating activator btn-move-up waves-effect waves-light red accent-2 z-depth-4 right ">
+                                            <i class="material-icons ">edit</i>
+                                        </a>
+                                        <h5 class="card-title activator grey-text text-darken-4 ">Strategic Message</h5>
+                                        <p><i class="material-icons profile-card-i ">perm_identity</i> 9+3LE</p>
+                                        <p><i class="material-icons profile-card-i ">perm_phone_msg</i> More info click pencil icon</p>
+
+                                    </div>
+                                    <div class="card-reveal ">
+                                        <span class="card-title grey-text text-darken-4 ">Strategic Message<i class="material-icons right ">close</i>
+                                            </span>
+                                        <p>Forecasting Guidance to Key Managers for remainder of 2019: <br>
+                                            <ul>
+                                                <li><strong>(1)</strong> Favorability will be used to offset work currently in 2019 plan, regardless of Executive Category.</li><br>
+                                                <li>(2) Ensure all 2020 Engineering for Q1 is complete and ensure Civil work execution is ready if planned for Q1.</li><br>
+                                                <li>(3) Start thinking about 2020 Q2 Engineering as well as further favorability that will be given up to offset ComEd Challenge (approx. $23M at 9+3 LE – an increase despite $5M P&CM giveback).</li><br>
+                                                <li>(4) At the 8+4 LE, the Challenge was $17M. P&CM gave up $5M, but that was offset by some new unfavorability in other areas. As a result, there is now more focus being placed on finding 2019 opportunities/favorability
+                                                    to give back to the company. </li><br>
+                                                <li>(5) Scrub forecasts and identify all areas of potential opportunity. </li><br>
+                                                <li>(6) Track work that falls out of 2019 Workplan and creates risk for 2020.</li><br>
+                                                <li>(7) As we identify 2019 opportunities, we need to keep line of sight to work that creates an unbudgeted risk to 2020.</li><br>
+                                                <li>(8) Do not pull forward work that’s budgeted in 2020 LRP 2.0.
+                                                    <li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col s12 m12 l4 ">
+                                <div id="profile-card " class="card animate fadeRight ">
+                                    <div class="card-image waves-effect waves-block waves-light ">
+                                        <img class="activator " src="images/conference-hall.png " alt="user bg ">
+                                    </div>
+                                    <div class="card-content ">
+                                        <img src="images/duties.png " alt=" " class="circle responsive-img activator card-profile-image cyan lighten-1 padding-2 ">
+                                        <a class="btn-floating activator btn-move-up waves-effect waves-light red accent-2 z-depth-4 right ">
+                                            <i class="material-icons ">edit</i>
+                                        </a>
+                                        <h5 class="card-title activator grey-text text-darken-4 ">Kia Rhodes</h5>
+                                        <p><i class="material-icons profile-card-i ">perm_identity</i> Business Analyst</p>
+                                        <p><i class="material-icons profile-card-i ">perm_phone_msg</i> +1 (630)888 6325</p>
+                                        <p><i class="material-icons profile-card-i ">email</i> Kia.Rhodes@ComEd.com</p>
+                                    </div>
+                                    <div class="card-reveal ">
+                                        <span class="card-title grey-text text-darken-4 ">Project Controls<i class="material-icons right ">close</i>
+                                        </span>
+                                        <p>Any questions contact info below.</p>
+                                        <p><i class="material-icons ">perm_identity</i> Jennifer Johnson</p>
+                                        <p><i class="material-icons ">email</i>Jennifer.Johnson@ComEd.com</p>
+                                        <p><i class="material-icons ">perm_identity</i> Brandi Chacon</p>
+                                        <p><i class="material-icons ">email</i>Brandi.Chacon@ComEd.com</p>
+                                        <p><i class="material-icons ">perm_identity</i> Yvette Daniels</p>
+                                        <p><i class="material-icons ">email</i>Yvette.Daniels@ComEd.com</p>
+                                        <p><i class="material-icons ">perm_identity</i> Kia Rhodes</p>
+                                        <p><i class="material-icons ">email</i>Kia.Rhodes@ComEd.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--card widgets end-->
+                    <div style="bottom: 50px; right: 19px; " class="fixed-action-btn direction-top ">
+                        <a class="btn-floating btn-large gradient-45deg-red-pink gradient-shadow "><i class="material-icons ">add</i></a>
+                        <ul>
+                            <li><a href="contact.html " class="btn-floating blue "><i class="material-icons ">help_outline</i></a></li>
+                            <li><a href="cards-extended.html " class="btn-floating green "><i class="material-icons ">widgets</i></a></li>
+                            <li><a href="calendar.html " class="btn-floating amber "><i class="material-icons ">today</i></a></li>
+                            <li><a href="app-email.html " class="btn-floating red "><i class="material-icons ">mail_outline</i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- END RIGHT SIDEBAR NAV -->
+    <div style="bottom: 50px; right: 19px; " class="fixed-action-btn direction-top ">
+        <a class="btn-floating btn-large black ">
+            <i class="material-icons ">add</i>
+        </a>
+        <ul>
+            <li>
+                <a href="contact.html " class="btn-floating blue ">
+                    <i class="material-icons ">help_outline</i>
+                </a>
+            </li>
+            <li>
+                <a href="cards-extended.html " class="btn-floating green ">
+                    <i class="material-icons ">widgets</i>
+                </a>
+            </li>
+            <li>
+                <a href="calendar.html " class="btn-floating amber ">
+                    <i class="material-icons ">today</i>
+                </a>
+            </li>
+            <li>
+                <a href="app-email.html " class="btn-floating red ">
+                    <i class="material-icons ">mail_outline</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <a href="# " data-target="theme-cutomizer-out " class="btn btn-customizer black white-text sidenav-trigger theme-cutomizer-trigger ">
+        <i class="material-icons ">settings</i>
+    </a>
+    <div id="theme-cutomizer-out " class="theme-cutomizer sidenav row right-aligned ps ps--active-y ">
+        <div class="col s12 ">
+            <a class="sidenav-close " href="#! "><i class="material-icons ">close</i></a>
+            <h5 class="theme-cutomizer-title ">Change Theme</h5>
+            <p class="medium-small ">Customize & Preview in Real Time</p>
+            <div class="menu-options ">
+                <h6 class="mt-6 ">Menu Options</h6>
+                <hr class="customize-devider ">
+                <div class="menu-options-form row ">
+                    <div class="input-field col s12 menu-color mb-0 ">
+                        <p class="mt-0 ">Menu Color</p>
+                        <div class="gradient-color center-align ">
+                            <span class="menu-color-option gradient-45deg-indigo-blue " data-color="gradient-45deg-indigo-blue "></span>
+                            <span class="menu-color-option gradient-45deg-purple-deep-orange " data-color="gradient-45deg-purple-deep-orange "></span>
+                            <span class="menu-color-option gradient-45deg-light-blue-cyan " data-color="gradient-45deg-light-blue-cyan "></span>
+                            <span class="menu-color-option gradient-45deg-purple-amber " data-color="gradient-45deg-purple-amber "></span>
+                            <span class="menu-color-option gradient-45deg-purple-deep-purple " data-color="gradient-45deg-purple-deep-purple "></span>
+                            <span class="menu-color-option gradient-45deg-deep-orange-orange " data-color="gradient-45deg-deep-orange-orange "></span>
+                            <span class="menu-color-option gradient-45deg-green-teal " data-color="gradient-45deg-green-teal "></span>
+                            <span class="menu-color-option gradient-45deg-indigo-light-blue " data-color="gradient-45deg-indigo-light-blue "></span>
+                            <span class="menu-color-option gradient-45deg-red-pink " data-color="gradient-45deg-red-pink "></span>
+                        </div>
+                        <div class="solid-color center-align ">
+                            <span class="menu-color-option red " data-color="red "></span>
+                            <span class="menu-color-option purple " data-color="purple "></span>
+                            <span class="menu-color-option pink " data-color="pink "></span>
+                            <span class="menu-color-option deep-purple " data-color="deep-purple "></span>
+                            <span class="menu-color-option cyan " data-color="cyan "></span>
+                            <span class="menu-color-option teal " data-color="teal "></span>
+                            <span class="menu-color-option light-blue " data-color="light-blue "></span>
+                            <span class="menu-color-option amber darken-3 " data-color="amber darken-3 "></span>
+                            <span class="menu-color-option brown darken-2 " data-color="brown darken-2 "></span>
+                        </div>
+                    </div>
+                    <div class="input-field col s12 menu-bg-color mb-0 " style="display: none; ">
+                        <p class="mt-0 ">Menu Background Color</p>
+                        <div class="gradient-color center-align ">
+                            <span class="menu-bg-color-option gradient-45deg-indigo-blue " data-color="gradient-45deg-indigo-blue "></span>
+                            <span class="menu-bg-color-option gradient-45deg-purple-deep-orange " data-color="gradient-45deg-purple-deep-orange "></span>
+                            <span class="menu-bg-color-option gradient-45deg-light-blue-cyan " data-color="gradient-45deg-light-blue-cyan "></span>
+                            <span class="menu-bg-color-option gradient-45deg-purple-amber " data-color="gradient-45deg-purple-amber "></span>
+                            <span class="menu-bg-color-option gradient-45deg-purple-deep-purple " data-color="gradient-45deg-purple-deep-purple "></span>
+                            <span class="menu-bg-color-option gradient-45deg-deep-orange-orange " data-color="gradient-45deg-deep-orange-orange "></span>
+                            <span class="menu-bg-color-option gradient-45deg-green-teal " data-color="gradient-45deg-green-teal "></span>
+                            <span class="menu-bg-color-option gradient-45deg-indigo-light-blue " data-color="gradient-45deg-indigo-light-blue "></span>
+                            <span class="menu-bg-color-option gradient-45deg-red-pink " data-color="gradient-45deg-red-pink "></span>
+                        </div>
+                        <div class="solid-color center-align ">
+                            <span class="menu-bg-color-option red " data-color="red "></span>
+                            <span class="menu-bg-color-option purple " data-color="purple "></span>
+                            <span class="menu-bg-color-option pink " data-color="pink "></span>
+                            <span class="menu-bg-color-option deep-purple " data-color="deep-purple "></span>
+                            <span class="menu-bg-color-option cyan " data-color="cyan "></span>
+                            <span class="menu-bg-color-option teal " data-color="teal "></span>
+                            <span class="menu-bg-color-option light-blue " data-color="light-blue "></span>
+                            <span class="menu-bg-color-option amber darken-3 " data-color="amber darken-3 "></span>
+                            <span class="menu-bg-color-option brown darken-2 " data-color="brown darken-2 "></span>
+                        </div>
+                    </div>
+                    <div class="input-field col s12 ">
+                        <div class="switch ">
+                            Menu Dark
+                            <label class="float-right "><input class="menu-dark-checkbox " type="checkbox "> <span class="lever ml-0 "></span></label>
+                        </div>
+                    </div>
+                    <div class="input-field col s12 ">
+                        <div class="switch ">
+                            Menu Collapsed
+                            <label class="float-right "><input class="menu-collapsed-checkbox " type="checkbox "> <span class="lever ml-0 "></span></label>
+                        </div>
+                    </div>
+                    <div class="input-field col s12 ">
+                        <div class="switch ">
+                            <p class="mt-0 ">Menu Selection</p>
+                            <label>
+                                                                    <input class="menu-selection-radio with-gap " value="sidenav-active-square " name="menu-selection " type="radio ">
+                                                                    <span>Square</span>
+                                                                </label>
+                            <label>
+                                                                    <input class="menu-selection-radio with-gap " value="sidenav-active-rounded " name="menu-selection " type="radio ">
+                                                                    <span>Rounded</span>
+                                                                </label>
+                            <label>
+                                                                    <input class="menu-selection-radio with-gap " value=" " name="menu-selection " type="radio ">
+                                                                    <span>Normal</span>
+                                                                </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h6 class="mt-6 ">Navbar Options</h6>
+            <hr class="customize-devider ">
+            <div class="navbar-options row ">
+                <div class="input-field col s12 navbar-color mb-0 ">
+                    <p class="mt-0 ">Navbar Color</p>
+                    <div class="gradient-color center-align ">
+                        <span class="navbar-color-option gradient-45deg-indigo-blue " data-color="gradient-45deg-indigo-blue "></span>
+                        <span class="navbar-color-option gradient-45deg-purple-deep-orange " data-color="gradient-45deg-purple-deep-orange "></span>
+                        <span class="navbar-color-option gradient-45deg-light-blue-cyan " data-color="gradient-45deg-light-blue-cyan "></span>
+                        <span class="navbar-color-option gradient-45deg-purple-amber " data-color="gradient-45deg-purple-amber "></span>
+                        <span class="navbar-color-option gradient-45deg-purple-deep-purple " data-color="gradient-45deg-purple-deep-purple "></span>
+                        <span class="navbar-color-option gradient-45deg-deep-orange-orange " data-color="gradient-45deg-deep-orange-orange "></span>
+                        <span class="navbar-color-option gradient-45deg-green-teal " data-color="gradient-45deg-green-teal "></span>
+                        <span class="navbar-color-option gradient-45deg-indigo-light-blue " data-color="gradient-45deg-indigo-light-blue "></span>
+                        <span class="navbar-color-option gradient-45deg-red-pink " data-color="gradient-45deg-red-pink "></span>
+                    </div>
+                    <div class="solid-color center-align ">
+                        <span class="navbar-color-option red " data-color="red "></span>
+                        <span class="navbar-color-option purple " data-color="purple "></span>
+                        <span class="navbar-color-option pink " data-color="pink "></span>
+                        <span class="navbar-color-option deep-purple " data-color="deep-purple "></span>
+                        <span class="navbar-color-option cyan " data-color="cyan "></span>
+                        <span class="navbar-color-option teal " data-color="teal "></span>
+                        <span class="navbar-color-option light-blue " data-color="light-blue "></span>
+                        <span class="navbar-color-option amber darken-3 " data-color="amber darken-3 "></span>
+                        <span class="navbar-color-option brown darken-2 " data-color="brown darken-2 "></span>
+                    </div>
+                </div>
+                <div class="input-field col s12 ">
+                    <div class="switch ">
+                        Navbar Dark
+                        <label class="float-right "><input class="navbar-dark-checkbox " type="checkbox "> <span class="lever ml-0 "></span></label>
+                    </div>
+                </div>
+                <div class="input-field col s12 ">
+                    <div class="switch ">
+                        Navbar Fixed
+                        <label class="float-right "><input class="navbar-fixed-checkbox " type="checkbox " checked=" "> <span class="lever ml-0 "></span></label>
+                    </div>
+                </div>
+            </div>
+            <h6 class="mt-6 ">Footer Options</h6>
+            <hr class="customize-devider ">
+            <div class="navbar-options row ">
+                <div class="input-field col s12 ">
+                    <div class="switch ">
+                        Footer Dark
+                        <label class="float-right ">
+                            <input class="footer-dark-checkbox " type="checkbox "> 
+                            <span class="lever ml-0 "></span>
+                            </label>
+                    </div>
+                </div>
+                <div class="input-field col s12 ">
+                    <div class="switch ">
+                        Footer Fixed
+                        <label class="float-right ">
+                            <input class="footer-fixed-checkbox " type="checkbox "> 
+                            <span class="lever ml-0 "></span>
+                            </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ps__rail-x " style="left: 0px; bottom: 0px; ">
+            <div class="ps__thumb-x " tabindex="0 " style="left: 0px; width: 0px; "></div>
+        </div>
+        <div class="ps__rail-y " style="top: 0px; height: 666px; right: 0px; ">
+            <div class="ps__thumb-y " tabindex="0 " style="top: 0px; height: 404px; ">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="js/jquery-jvectormap.css "></script>
+    <script src="js/jquery-jvectormap.min.js "></script>
+    <script src="js/jquery-jvectormap-world-mill-en.js "></script>
+    <script src="js/vendors.min.js " type="text/javascript "></script>
+    <script src="js/dashboard-analytics.js " type="text/javascript "></script>
+    <script src="js/jquery.sparkline.min.js "></script>
+    <script src="js/chart.min.js "></script>
+    <script src="js/plugins.js " type="text/javascript "></script>
+    <script src="js/custom-script.js " type="text/javascript "></script>
+    <script src="js/customizer.js " type="text/javascript "></script>
+
+</body>
+<footer class="page-footer footer footer-static footer-dark black ">
+    <p class="copyright ">© 2019 Website<br> @ KR Business Analyst - Office Administrator</p>
+    <i class="social-icon fas fa-tachometer-alt "></i>
+    <i class="social-icon fab fa-twitter "></i>
+    <i class="social-icon fab fa-linkedin "></i>
+    <i class="social-icon fab fa-facebook-square "></i>
+</footer>
+
+</html>
